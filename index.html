@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scrapio.css">
+    <title>Scrapio : Scrap with confidence</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="logo.svg" alt="Icon description" width="210" height=auto></div>
+        <div class="dropbtn" id="hamburger" onclick="showHamburger()">☰</div>
+        <ul id="menuContent" class="menu">
+            <li class="nav-item"><a href="#">About</a></li>
+            <li class="nav-item"><a href="#">Contact</a></li>
+            <li class="nav-item"><a href="#">FAQ</a></li>
+            <li><a id="nav-button" href="#">Get Vehicle Price</a></li>
+        </ul>
+    </nav>
+    <div class="hero">
+        <main>
+            <div class="hero-info">
+                <section>
+                    <h1 class="title">Vehicle Scrapping<br>Simplified with<br>Scrapio</h1>
+                </section>
+                <section class="hero-box">
+                    <div>
+                        <img src="price.png" alt="Icon description" width="35" height="35">
+                    </div>
+                    <div>
+                        <h2>Best Scrap Price</h2>
+                        <p>After through examination we give you best scrap price</p>
+                    </div>
+                </section>
+                <section class="hero-box">
+                    <div>
+                        <img src="certificate.png" alt="Icon description" width="35" height="35">
+                    </div>
+                    <div>
+                        <h2>Great discounts with certificate</h2>
+                        <p>Eligible for discounts more than 1lakh with COD certificate</p>
+                    </div>
+                </section>
+            </div>
+            <div class="hero-image">
+                <img src="hero.svg" alt="hero illustration">
+            </div>
+        </main>
+        <aside>
+            <form id="heroForm">
+                <!-- Step 1 -->
+                <div class="form-step active-step" id="step-1">
+                    <h2>Enter Vehicle Information</h2>
+                    <div class="form-field">
+                        <label for="vehicleType">Vehicle type</label>
+                        <ul class="radio-input">
+                            <li>
+                                <input type="radio" id="personal" name="Vehicle Type" value="personal">
+                                <label for="personal">
+                                    <img src="personal.svg" alt="personal vehicle" width="50" height="50">
+                                    <p>Personal</p>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="radio" id="commercial" name="Vehicle Type" value="commercial">
+                                <label for="commercial">
+                                    <img src="commercial.svg" alt="commercial vehicle" width="50" height="50">
+                                    <p>Commercial</p>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-field">
+                        <label for="vehicleNumber">Vehicle number</label>
+                        <input type="text" name="Vehicle Number" id="vehicleNumber" placeholder="RJ 23 CA3166" oninput="formatVehicleNumber()" required>
+                    </div>
+                    <button type="button" id="nextButton" class="form-button" onclick="nextStep()">Get Vehicle Price</button>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="form-step" id="step-2">
+                    <h2>Enter Vehicle Location and Contact Information</h2>
+                    <div class="form-field">
+                        <label for="stateInput">State or UT</label>
+                        <input type="text" name="State" class="state-input" placeholder="Search..." oninput="filterStates()" onclick="showStates(states)" id="stateInput" required>
+                        <div class="state-list" id="stateList"></div>
+                    </div>
+                    <div class="form-field">
+                        <label for="city">City</label>
+                        <input type="text" name="City" id="city" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="name">Name</label>
+                        <input type="text" name="Contact Person" id="name" placeholder="Vehicle Owner Name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" name="Phone Number" id="phoneNumber" placeholder="Enter 10-digit phone number" maxlength="10" required>
+                        <p id="validationMessage" style="color: red;"></p>
+                    </div>
+                    <button type="submit" id="submitForm" class="form-button">Request Price</button>
+                </div>
+                <div id="successMessage">
+                    <img src="success.svg" alt="success icon">
+                    <h2>"Request recieved!</h2>
+                    <p>our team will reach out to you within 24hrs.</p>
+                </div>
+            </form>
+        </aside>
+    </div>
+    <script>
+        function showHamburger() {
+            document.getElementById("menuContent").classList.toggle("show");
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('#hamburger')) {
+                var dropdowns = document.getElementsByClassName("menu");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        function formatVehicleNumber() {
+            const inputField = document.getElementById("vehicleNumber");
+            let value = inputField.value.toUpperCase(); // Ensure all input is uppercase
+
+            // Remove all non-alphanumeric characters (but allow spaces to remain)
+            value = value.replace(/[^A-Za-z0-9 ]/g, "");
+
+            // Remove extra spaces
+            value = value.replace(/\s+/g, " ").trim();
+
+            let formattedValue = "";
+
+            // Apply formatting: "RJ 23 CA3166"
+            for (let i = 0; i < value.length; i++) {
+                if (i === 2 || i === 5) {
+                formattedValue += " "; // Add a space after the 2nd and 5th character
+                }
+                formattedValue += value[i];
+            }
+
+            // Set the formatted value back into the input field
+            inputField.value = formattedValue;
+        }
+
+        const states = ["Andaman and Nicobar Islands","Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh","Dadra and Nagar Haveli","Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir","Jharkhand", "Karnataka", "Kerala","Ladakh","Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland","Odisha","Puducherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu"
+        , "Telangana", "Tripura", "Uttarakhand" ,
+        "Uttar Pradesh" ,"West Bengal"];
+    
+        // Function to display the dropdown options
+        function showStates(filteredStates) {
+          const stateList = document.getElementById('stateList');
+          stateList.innerHTML = '';
+    
+          if (filteredStates.length > 0) {
+            filteredStates.forEach(state => {
+              const div = document.createElement('div');
+              div.classList.add('state-option');
+              div.textContent = state;
+              div.onclick = function() {
+                selectState(state);
+              };
+              stateList.appendChild(div);
+            });
+            stateList.style.display = 'block';
+          } else {
+            stateList.style.display = 'none';
+          }
+        }
+    
+        // Function to filter the options based on the input
+        function filterStates() {
+            const searchInput = document.getElementById('stateInput').value.toLowerCase();
+            const filteredOptions = states.filter(option => option.toLowerCase().includes(searchInput));
+            showStates(filteredOptions);
+        }
+    
+        // Function to handle option selection
+        function selectState(state) {
+            document.getElementById('stateInput').value = state;
+            document.getElementById('stateList').style.display = 'none';
+        }
+
+        document.addEventListener('click', function(event) {
+            const stateList = document.getElementById('stateList');
+            const input = document.getElementById('stateInput');
+  
+             // Check if the click is outside of the input or the state list
+            if (!stateList.contains(event.target) && event.target !== input) {
+                stateList.style.display = 'none';
+            }
+        });
+        // Function to go to the next step
+        function nextStep() {
+            currentStep=document.getElementById(`step-1`);
+            const requiredFields = currentStep.querySelectorAll('[required]');
+
+            // Check if all required fields are filled
+            for (let field of requiredFields) {
+                if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
+                    // Show an error message if a required field is empty
+                    field.style.borderColor = 'red';
+                    field.style.backgroundColor = '#fdd'; 
+                    return;  // Stop the form from moving to the next step
+                }else{
+                    field.style.borderColor = '#D3CDCD';
+                    field.style.backgroundColor = 'white'; 
+                }
+            }
+            document.getElementById(`step-1`).classList.remove('active-step');
+            document.getElementById(`step-2`).classList.add('active-step');
+        }
+
+        function formFinal(){
+            const phoneInput = document.getElementById('phoneNumber');
+            const phone = phoneInput.value;  // No need to trim, since max length is enforced in HTML
+            currentStep=document.getElementById(`step-2`);
+            const requiredFields = currentStep.querySelectorAll('[required]');
+
+            // Check if all required fields are filled
+            for (let field of requiredFields) {
+                if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
+                    // Show an error message if a required field is empty
+                    field.style.borderColor = 'red';
+                    field.style.backgroundColor = '#fdd'; 
+                    return;  // Stop the form from moving to the next step
+                }else{
+                    field.style.borderColor = '#D3CDCD';
+                    field.style.backgroundColor = 'white'; 
+                }
+            }
+            if (validatePhoneNumber(phone)) {
+            // If valid, display success message, hide the form and simulate form submission
+                document.getElementById('heroForm').submit();
+                phoneInput.style.borderColor = '#D3CDCD';
+                phoneInput.style.backgroundColor = 'white'; 
+                // showSuccessMessage();
+                // setTimeout(function() {
+                // // Simulate form submission (can be replaced with real form submission)
+                // // In a real case, you can use AJAX or just submit the form.
+                //     alert("Form has been submitted successfully!");
+                //       // Simulating form submission (you can replace this with actual submission logic)
+                //     document.getElementById('heroForm').reset();  // Reset form
+                //     document.getElementById(`step-1`).classList.add('active-step');
+                //     document.getElementById('successMessage').style.display = 'none';  // Hide success message after reset
+                // }, 3000);  // Reset form after 3 seconds
+            }
+            else{
+                phoneInput.style.borderColor = 'red';
+                phoneInput.style.backgroundColor = '#fdd'; 
+            }
+        }
+
+        document.getElementById('heroForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            const phoneInput = document.getElementById('phoneNumber');
+            const phone = phoneInput.value;  // No need to trim, since max length is enforced in HTML
+            currentStep=document.getElementById(`step-2`);
+            const requiredFields = currentStep.querySelectorAll('[required]');
+
+            // Check if all required fields are filled
+            for (let field of requiredFields) {
+                if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
+                    // Show an error message if a required field is empty
+                    field.style.borderColor = 'red';
+                    field.style.backgroundColor = '#fdd'; 
+                    return;  // Stop the form from moving to the next step
+                }else{
+                    field.style.borderColor = '#D3CDCD';
+                    field.style.backgroundColor = 'white'; 
+                }
+            }
+            if (validatePhoneNumber(phone)) {
+            // If valid, display success message, hide the form and simulate form submission
+            var formData = new FormData(this);
+            var obj = {};
+            formData.forEach(function (value, key) {
+                obj[key] = value;
+            });
+
+            var jsonData = JSON.stringify(obj);
+
+            // Send data to Google Apps Script
+            fetch('https://script.google.com/a/macros/scrapioauto.com/s/AKfycbx317YlRJ3OECwauqB9BnnLj5-LALBTcruTHh7Qg4wB5dsZbIKfgo7UcRxECrLXJfGx/exec', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: jsonData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Form submitted successfully!');
+                console.log(data);
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            });
+                phoneInput.style.borderColor = '#D3CDCD';
+                phoneInput.style.backgroundColor = 'white';
+            } 
+        });
+
+        // Validate the phone number
+        function validatePhoneNumber(phone) {
+            const validationMessage = document.getElementById("validationMessage");
+
+            // Check if phone number is exactly 10 digits and valid
+            if (phone.length === 10 && /^[0-9]{10}$/.test(phone)) {
+                return true;
+            } else {
+                validationMessage.classList.add("invalidNumber");
+                validationMessage.textContent = "Phone number must be 10 digits.";
+                return false;
+            }
+        }
+
+        // Show success message
+        function showSuccessMessage() {
+            const successMessage = document.getElementById("successMessage");
+      
+            document.getElementById(`step-2`).classList.remove('active-step');
+      
+            // Show the success message
+            successMessage.style.display = 'block';
+        }
+    </script>
+</body>
+</html> 
