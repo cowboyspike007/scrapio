@@ -49,7 +49,7 @@
             </div>
         </main>
         <aside>
-            <form id="heroForm">
+            <form id="heroForm" method="POST" action="https://script.google.com/a/macros/scrapioauto.com/s/AKfycbwAoDsWMUEqn_qXGhGE6D4buicQJP4ErRLGQBKeDvvlhB3jNdh8-9BccEQ5PTWw4RXt/exec">
                 <!-- Step 1 -->
                 <div class="form-step active-step" id="step-1">
                     <h2>Enter Vehicle Information</h2>
@@ -220,45 +220,45 @@
             document.getElementById(`step-2`).classList.add('active-step');
         }
 
-        function formFinal(){
-            const phoneInput = document.getElementById('phoneNumber');
-            const phone = phoneInput.value;  // No need to trim, since max length is enforced in HTML
-            currentStep=document.getElementById(`step-2`);
-            const requiredFields = currentStep.querySelectorAll('[required]');
+        // function formFinal(){
+        //     const phoneInput = document.getElementById('phoneNumber');
+        //     const phone = phoneInput.value;  // No need to trim, since max length is enforced in HTML
+        //     currentStep=document.getElementById(`step-2`);
+        //     const requiredFields = currentStep.querySelectorAll('[required]');
 
-            // Check if all required fields are filled
-            for (let field of requiredFields) {
-                if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
-                    // Show an error message if a required field is empty
-                    field.style.borderColor = 'red';
-                    field.style.backgroundColor = '#fdd'; 
-                    return;  // Stop the form from moving to the next step
-                }else{
-                    field.style.borderColor = '#D3CDCD';
-                    field.style.backgroundColor = 'white'; 
-                }
-            }
-            if (validatePhoneNumber(phone)) {
-            // If valid, display success message, hide the form and simulate form submission
-                document.getElementById('heroForm').submit();
-                phoneInput.style.borderColor = '#D3CDCD';
-                phoneInput.style.backgroundColor = 'white'; 
-                // showSuccessMessage();
-                // setTimeout(function() {
-                // // Simulate form submission (can be replaced with real form submission)
-                // // In a real case, you can use AJAX or just submit the form.
-                //     alert("Form has been submitted successfully!");
-                //       // Simulating form submission (you can replace this with actual submission logic)
-                //     document.getElementById('heroForm').reset();  // Reset form
-                //     document.getElementById(`step-1`).classList.add('active-step');
-                //     document.getElementById('successMessage').style.display = 'none';  // Hide success message after reset
-                // }, 3000);  // Reset form after 3 seconds
-            }
-            else{
-                phoneInput.style.borderColor = 'red';
-                phoneInput.style.backgroundColor = '#fdd'; 
-            }
-        }
+        //     // Check if all required fields are filled
+        //     for (let field of requiredFields) {
+        //         if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
+        //             // Show an error message if a required field is empty
+        //             field.style.borderColor = 'red';
+        //             field.style.backgroundColor = '#fdd'; 
+        //             return;  // Stop the form from moving to the next step
+        //         }else{
+        //             field.style.borderColor = '#D3CDCD';
+        //             field.style.backgroundColor = 'white'; 
+        //         }
+        //     }
+        //     if (validatePhoneNumber(phone)) {
+        //     // If valid, display success message, hide the form and simulate form submission
+        //         document.getElementById('heroForm').submit();
+        //         phoneInput.style.borderColor = '#D3CDCD';
+        //         phoneInput.style.backgroundColor = 'white'; 
+        //         // showSuccessMessage();
+        //         // setTimeout(function() {
+        //         // // Simulate form submission (can be replaced with real form submission)
+        //         // // In a real case, you can use AJAX or just submit the form.
+        //         //     alert("Form has been submitted successfully!");
+        //         //       // Simulating form submission (you can replace this with actual submission logic)
+        //         //     document.getElementById('heroForm').reset();  // Reset form
+        //         //     document.getElementById(`step-1`).classList.add('active-step');
+        //         //     document.getElementById('successMessage').style.display = 'none';  // Hide success message after reset
+        //         // }, 3000);  // Reset form after 3 seconds
+        //     }
+        //     else{
+        //         phoneInput.style.borderColor = 'red';
+        //         phoneInput.style.backgroundColor = '#fdd'; 
+        //     }
+        // }
 
         document.getElementById('heroForm').addEventListener('submit', function (e) {
             e.preventDefault();
@@ -282,31 +282,12 @@
             }
             if (validatePhoneNumber(phone)) {
             // If valid, display success message, hide the form and simulate form submission
-            var formData = new FormData(this);
-            var obj = {};
-            formData.forEach(function (value, key) {
-                obj[key] = value;
-            });
-
-            var jsonData = JSON.stringify(obj);
-
-            // Send data to Google Apps Script
-            fetch('https://script.google.com/a/macros/scrapioauto.com/s/AKfycbw8MaO4X7h6p1xqobvy4uI6xTTEsqASagnZgg-TVVT-Px5Jsgfv3PZoh7ZucH9y3XnK/exec', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: jsonData
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Form submitted successfully!');
-                console.log(data);
-            })
-            .catch(error => {
-            console.error('Error:', error);
-            });
                 phoneInput.style.borderColor = '#D3CDCD';
                 phoneInput.style.backgroundColor = 'white';
-            } 
+            }else{
+                phoneInput.style.borderColor = 'red';
+                phoneInput.style.backgroundColor = '#fdd';
+            }
         });
 
         // Validate the phone number
