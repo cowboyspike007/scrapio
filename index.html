@@ -253,7 +253,10 @@
                 })
                 .then(() => {
                     setTimeout(function() {
-                      showSuccessMessage();
+                        showSuccessMessage();
+                        form.reset();
+                        document.getElementById('successMessage').style.display = 'none';
+                        document.getElementById(`step-1`).classList.add('active-step');
                     }, 2000); 
                 })
             }
