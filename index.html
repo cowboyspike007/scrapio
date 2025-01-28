@@ -226,25 +226,26 @@
             e.preventDefault();
             const phoneInput = document.getElementById('phoneNumber');
             const phone = phoneInput.value;  // No need to trim, since max length is enforced in HTML
-            currentStep=document.getElementById(`step-2`);
-            const requiredFields = currentStep.querySelectorAll('[required]');
+            // currentStep=document.getElementById(`step-2`);
+            // const requiredFields = currentStep.querySelectorAll('[required]');
 
-            // Check if all required fields are filled
-            for (let field of requiredFields) {
-                if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
-                    // Show an error message if a required field is empty
-                    field.style.borderColor = 'red';
-                    field.style.backgroundColor = '#fdd'; 
-                    return;  // Stop the form from moving to the next step
-                }else{
-                    field.style.borderColor = '#D3CDCD';
-                    field.style.backgroundColor = 'white'; 
-                }
-            }
+            // // Check if all required fields are filled
+            // for (let field of requiredFields) {
+            //     if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
+            //         // Show an error message if a required field is empty
+            //         field.style.borderColor = 'red';
+            //         field.style.backgroundColor = '#fdd'; 
+            //         return;  // Stop the form from moving to the next step
+            //     }else{
+            //         field.style.borderColor = '#D3CDCD';
+            //         field.style.backgroundColor = 'white'; 
+            //     }
+            // }
             if (validatePhoneNumber(phone)) {
             // If valid, display success message, hide the form and simulate form submission
                 phoneInput.style.borderColor = '#D3CDCD';
                 phoneInput.style.backgroundColor = 'white';
+                validationMessage.classList.remove("invalidNumber");
                 const data = new FormData(form);
                 const action = e.target.action;
                 fetch(action, {
@@ -267,15 +268,6 @@
           });
         });
 
-            // setTimeout(function() {
-                // // Simulate form submission (can be replaced with real form submission)
-                // In a real case, you can use AJAX or just submit the form.
-                    // alert("Form has been submitted successfully!");
-                    //   // Simulating form submission (you can replace this with actual submission logic)
-                    // document.getElementById('heroForm').reset();  // Reset form
-                    // document.getElementById(`step-1`).classList.add('active-step');
-                    // document.getElementById('successMessage').style.display = 'none';  // Hide success message after reset
-                 // Reset form after 3 seconds
         // Validate the phone number
         function validatePhoneNumber(phone) {
             const validationMessage = document.getElementById("validationMessage");
