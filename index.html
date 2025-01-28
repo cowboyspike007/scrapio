@@ -260,35 +260,35 @@
         //     }
         // }
 
-        document.getElementById('heroForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+        // document.getElementById('heroForm').addEventListener('submit', function (e) {
+        //     e.preventDefault();
             
-            const phoneInput = document.getElementById('phoneNumber');
-            const phone = phoneInput.value;  // No need to trim, since max length is enforced in HTML
-            currentStep=document.getElementById(`step-2`);
-            const requiredFields = currentStep.querySelectorAll('[required]');
+        //     const phoneInput = document.getElementById('phoneNumber');
+        //     const phone = phoneInput.value;  // No need to trim, since max length is enforced in HTML
+        //     currentStep=document.getElementById(`step-2`);
+        //     const requiredFields = currentStep.querySelectorAll('[required]');
 
-            // Check if all required fields are filled
-            for (let field of requiredFields) {
-                if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
-                    // Show an error message if a required field is empty
-                    field.style.borderColor = 'red';
-                    field.style.backgroundColor = '#fdd'; 
-                    return;  // Stop the form from moving to the next step
-                }else{
-                    field.style.borderColor = '#D3CDCD';
-                    field.style.backgroundColor = 'white'; 
-                }
-            }
-            if (validatePhoneNumber(phone)) {
-            // If valid, display success message, hide the form and simulate form submission
-                phoneInput.style.borderColor = '#D3CDCD';
-                phoneInput.style.backgroundColor = 'white';
-            }else{
-                phoneInput.style.borderColor = 'red';
-                phoneInput.style.backgroundColor = '#fdd';
-            }
-        });
+        //     // Check if all required fields are filled
+        //     for (let field of requiredFields) {
+        //         if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
+        //             // Show an error message if a required field is empty
+        //             field.style.borderColor = 'red';
+        //             field.style.backgroundColor = '#fdd'; 
+        //             return;  // Stop the form from moving to the next step
+        //         }else{
+        //             field.style.borderColor = '#D3CDCD';
+        //             field.style.backgroundColor = 'white'; 
+        //         }
+        //     }
+        //     if (validatePhoneNumber(phone)) {
+        //     // If valid, display success message, hide the form and simulate form submission
+        //         phoneInput.style.borderColor = '#D3CDCD';
+        //         phoneInput.style.backgroundColor = 'white';
+        //     }else{
+        //         phoneInput.style.borderColor = 'red';
+        //         phoneInput.style.backgroundColor = '#fdd';
+        //     }
+        // });
 
         // Validate the phone number
         function validatePhoneNumber(phone) {
