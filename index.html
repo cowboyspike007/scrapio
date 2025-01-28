@@ -220,6 +220,21 @@
             document.getElementById(`step-2`).classList.add('active-step');
         }
 
+        window.addEventListener("load", function() {
+          const form = document.getElementById('heroForm');
+          form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            const action = e.target.action;
+            fetch(action, {
+              method: 'POST',
+              body: data,
+            })
+            .then(() => {
+              alert("Success!");
+            })
+          });
+        });
         // function formFinal(){
         //     const phoneInput = document.getElementById('phoneNumber');
         //     const phone = phoneInput.value;  // No need to trim, since max length is enforced in HTML
