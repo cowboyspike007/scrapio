@@ -57,14 +57,14 @@
                         <label for="vehicleType">Vehicle type</label>
                         <ul class="radio-input">
                             <li>
-                                <input type="radio" id="personal" name="Vehicle Type" value="personal">
+                                <input type="radio" id="personal" name="vehicleType" value="personal">
                                 <label for="personal">
                                     <img src="personal.svg" alt="personal vehicle" width="50" height="50">
                                     <p>Personal</p>
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="commercial" name="Vehicle Type" value="commercial">
+                                <input type="radio" id="commercial" name="vehicleType" value="commercial">
                                 <label for="commercial">
                                     <img src="commercial.svg" alt="commercial vehicle" width="50" height="50">
                                     <p>Commercial</p>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="form-field">
                         <label for="vehicleNumber">Vehicle number</label>
-                        <input type="text" name="Vehicle Number" id="vehicleNumber" placeholder="RJ 23 CA3166" oninput="formatVehicleNumber()" required>
+                        <input type="text" name="vehicleNumber" id="vehicleNumber" placeholder="RJ 23 CA3166" oninput="formatVehicleNumber()" required>
                     </div>
                     <button type="button" id="nextButton" class="form-button" onclick="nextStep()">Get Vehicle Price</button>
                 </div>
@@ -84,20 +84,20 @@
                     <h2>Enter Vehicle Location and Contact Information</h2>
                     <div class="form-field">
                         <label for="stateInput">State or UT</label>
-                        <input type="text" name="State" class="state-input" placeholder="Search..." oninput="filterStates()" onclick="showStates(states)" id="stateInput" required>
+                        <input type="text" name="state" class="state-input" placeholder="Search..." oninput="filterStates()" onclick="showStates(states)" id="stateInput" required>
                         <div class="state-list" id="stateList"></div>
                     </div>
                     <div class="form-field">
                         <label for="city">City</label>
-                        <input type="text" name="City" id="city" required>
+                        <input type="text" name="city" id="city" required>
                     </div>
                     <div class="form-field">
                         <label for="name">Name</label>
-                        <input type="text" name="Contact Person" id="name" placeholder="Vehicle Owner Name" required>
+                        <input type="text" name="contactPerson" id="name" placeholder="Vehicle Owner Name" required>
                     </div>
                     <div class="form-field">
                         <label for="phoneNumber">Phone Number</label>
-                        <input type="text" name="Phone Number" id="phoneNumber" placeholder="Enter 10-digit phone number" maxlength="10" required>
+                        <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter 10-digit phone number" maxlength="10" required>
                         <p id="validationMessage" style="color: red;"></p>
                     </div>
                     <button type="submit" id="submitForm" class="form-button">Request Price</button>
