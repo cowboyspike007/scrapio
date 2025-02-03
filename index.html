@@ -13,10 +13,10 @@
         <div class="logo"><img src="logo.svg" alt="Icon description" width="210" height=auto></div>
         <div class="dropbtn" id="hamburger" onclick="showHamburger()">☰</div>
         <ul id="menuContent" class="menu">
-            <li class="nav-item"><a href="#">About</a></li>
-            <li class="nav-item"><a href="#">Contact</a></li>
-            <li class="nav-item"><a href="#">FAQ</a></li>
-            <li><a id="nav-button" href="#">Get Vehicle Price</a></li>
+            <li class="nav-item"><a href="#about">About</a></li>
+            <li class="nav-item"><a href="#contact">Contact</a></li>
+            <li class="nav-item"><a href="#faq">FAQ</a></li>
+            <li><a id="nav-button" href="#get-price">Get Vehicle Price</a></li>
         </ul>
     </nav>
     <div class="hero">
@@ -48,7 +48,7 @@
                 <img src="hero.svg" alt="hero illustration">
             </div>
         </main>
-        <aside>
+        <aside id="get-price">
             <form id="heroForm" method="POST" action="https://script.google.com/macros/s/AKfycbxT_8NSKUECCCj3Aqhcosmt6_VOINtiDW-dRIJfPeTRsIzfDq2zh2m_WzJILW1XkiFV/exec">
                 <!-- Step 1 -->
                 <div class="form-step active-step" id="step-1">
@@ -57,14 +57,14 @@
                         <label for="vehicleType">Vehicle type</label>
                         <ul class="radio-input">
                             <li>
-                                <input type="radio" id="personal" name="vehicleType" value="personal">
+                                <input type="radio" id="personal" name="vehicleType" value="personal" required>
                                 <label for="personal">
                                     <img src="personal.svg" alt="personal vehicle" width="50" height="50">
                                     <p>Personal</p>
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="commercial" name="vehicleType" value="commercial">
+                                <input type="radio" id="commercial" name="vehicleType" value="commercial" required>
                                 <label for="commercial">
                                     <img src="commercial.svg" alt="commercial vehicle" width="50" height="50">
                                     <p>Commercial</p>
@@ -98,18 +98,344 @@
                     <div class="form-field">
                         <label for="phoneNumber">Phone Number</label>
                         <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter 10-digit phone number" maxlength="10" required>
-                        <p id="validationMessage" style="color: red;"></p>
+                        <p id="validationMessage" style="color: red;">Phone number is not correct</p>
                     </div>
                     <button type="submit" id="submitForm" class="form-button">Request Price</button>
                 </div>
                 <div id="successMessage">
-                    <img src="success.svg" alt="success icon">
-                    <h2>"Request recieved!</h2>
-                    <p>our team will reach out to you within 24hrs.</p>
+                    <img src="success.png" alt="success icon">
+                    <h1>"Request recieved!</h1>
+                    <p>Our team will reach out to you within 24hrs.</p>
                 </div>
             </form>
         </aside>
     </div>
+        <div class="who">
+            <div>
+                <h1>Who should Scrap<br> and When?</h1>
+                <p>Unsure about vehicle scrapping? here are some common cases when it is generally best to get vehicle scrapped.</p>
+            </div>
+            <div class="scrap-who">
+                <div>
+                    <section class="who-box">
+                        <img src="private.svg" alt="" width="50" height="50">
+                        <h2>Private Vehicle</h2>
+                        <p>Vehicles at End of life Usually:</p>
+                        <ul>
+                            <li><strong>Petrol:</strong> 15years</li>
+                            <li><strong>Diesel:</strong> 10years</li>
+                        </ul>
+                    </section>
+                    <section class="who-box">
+                        <img src="truck.svg" alt="" width="50" height="50">
+                        <h2>Commercial Vehicle</h2>
+                        <p>Old commercial vehicles:</p>
+                        <ul>
+                            <li><strong>Petrol:</strong> 15years</li>
+                            <li><strong>Diesel:</strong> 15years</li>
+                        </ul>
+                    </section>
+                </div>
+                <div id="who2">
+                    <section class="who-box">
+                        <img src="accident.svg" alt="" width="50" height="50">
+                        <h2>Accidental Vehicle</h2>
+                        <p>Accidental vehicles incurring large cost of repairs, scrapping can be a better financial choice</p>
+                    </section>
+                    <section class="who-box">
+                        <img src="unfit.svg" alt="" width="50" height="50">
+                        <h2>Damaged or Unfit Vehicle</h2>
+                        <p>If your vehicle is failing vehicle fitness test it might be an indication of not safe for roads and such vehicles can be scrapped</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="how">
+            <h1>How Scrapio works</h1>
+            <div>
+                <section class="how-box">
+                    <img src="verification.svg" alt="">
+                    <h2>1. Car Verification</h2>
+                    <p>Provide your vehicle registration number so we can verify your car details.</p>
+                </section>
+                <section class="how-box">
+                    <img src="evaluation.svg" alt="">
+                    <h2>2. Vehicle Evaluation</h2>
+                    <p>Our team will evaluate your vehicle and provide you a quotation.</p>
+                </section>
+                <section class="how-box">
+                    <img src="pickup.svg" alt="">
+                    <h2>3. Payment & Pickup</h2>
+                    <p>After payment is completed we will pick up your car at a time slot you choose</p>
+                </section>
+                <section class="how-box">
+                    <img src="deregistration.svg" alt="">
+                    <h2>4. Deregistration</h2>
+                    <p>We will complete the due process of getting your vehicle deregistered on Govt. portal.</p>
+                </section>
+                <section class="how-box">
+                    <img src="certificate.svg" alt="">
+                    <h2>5. Certificate generation</h2>
+                    <p>After successful Deregistration Certificate of Deposit (Scrappage certificate) will be generated and provided to you.</p>
+                </section>
+                <section class="how-box">
+                    <img src="dismantle.svg" alt="">
+                    <h2>6. Depollutioning & Dismantling</h2>
+                    <p>We will start the scrapping process by Depolluting and dismantling your vehicle at our scrappage facility.</p>
+                </section>
+            </div>
+        </div>
+    <div class="about" id="about">
+        <div>
+            <h3>About <span><img src="logo-icon.png" alt="" height="32" width="32"></span> Scrapio</h3>
+            <h2>Here at Scrapio we are taking vehicles at their and of life but in turn are giving our planet a new life. Derived by the passion and on point with regulations, Scrapping for a greater good.</h2>
+        </div>
+        <div>
+            <div class="about-info">
+                <section>
+                    <h3>01</h3>
+                </section>
+                <section class="about-text">
+                    <h2>Environmental Responsibility</h2>
+                    <p class="about-p">We prioritize sustainability by ensuring that all vehicles are dismantled and recycled in eco-friendly ways. We follow best practices for disposing of hazardous materials and strive to minimize our environmental footprint. Every step we take is designed to contribute to a cleaner planet.</p>
+                </section>
+            </div>
+            <div class="about-info">
+                <section>
+                    <h3>02</h3>
+                </section>
+                <section class="about-text">
+                    <h2>Compliance with Laws and Regulations</h2>
+                    <p class="about-p">We operate in full compliance with all local, regional, and national laws governing vehicle disposal and recycling. Our team ensures that we follow safety protocols and obtain all necessary permits to meet regulatory standards and safeguard our community.</p>
+                </section>
+            </div>
+            <div class="about-info">
+                <section>
+                    <h3>03</h3>
+                </section>
+                <section class="about-text">
+                    <h2>Fair and Transparent Pricing</h2>
+                    <p class="about-p">We believe in offering fair and honest pricing for every vehicle we scrap. Our pricing process is transparent, and we clearly communicate how values are determined, ensuring that our customers feel confident they are receiving a fair deal.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="faq" id="faq">
+        <div>
+            <h1>Frequently Asked Questions</h1>
+        </div>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>What is Vehicle Scrappage Policy in India?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>The Vehicle Scrappage Policy is a government-funded programme to scrap old and unfit vehicles and replace them with modern and new vehicles on Indian roads. The primary goal of the policy is to create an ecosystem for phasing out unfit and polluting vehicles to achieve a lower carbon footprint in the country.<br><br>Commercial vehicles and private vehicles older than 15 and 20 years, respectively, shall be scrapped if they fail the fitness test. If a vehicle fails the fitness test, it shall be defined as an ELV (End-of-Life Vehicle).</p>
+            </div>
+        </section>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>What is a RVSF?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>RVSF stands for Registered Vehicle Scrapping Facility. It's a licensed facility that dismantles and scraps vehicles</p>
+            </div>
+        </section>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>Can we use a car after 20 years in India?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>The Central Motor Vehicle Rules states that private vehicles have to be re-registered after 15 years & for the commercial vehicles, its after 20 years for every 5 years.</p>
+            </div>
+        </section>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>What are the benefits for scrapping old vehicles?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>Here are the benefits when you scrap old vehicles.</p>
+                <ul>
+                    <li><strong>Avail a discount:</strong> After scrapping the vehicle, the owner may receive a 4 to 6% discount on the new vehicle cost (ex-showroom).</li>
+                    <li><strong>No registration charges:</strong> Upon declaring the Certificate of Deposit, the registration fees for the new vehicle are waived.</li>
+                    <li><strong>Concession on road tax: </strong> State governments may offer a concession on the road tax on the new vehicle. The concession can be up to 25% for non-transport vehicles and 15% for transport vehicles.</li>
+                    <li><strong>Discount on a new vehicle:</strong> Vehicle manufacturers have been requested to offer a discount of 5% on purchasing a new vehicle against the Certificate of Deposit. This discount is over and above the scrap value, you receive for your vehicle.</li>
+                </ul>
+            </div>
+        </section>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>Where should I get the vehicle tested or scrapped?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>If you vehicle is end of life, near end of life or damaged you can get the vehicle tested at a vehicle fitness centre. Else you can just reach out to us and we will help you through the whole process</p>
+            </div>
+        </section>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>What are the documents required for car scrapping?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>During the process, it is necessary to carry the original documents, they are as follows:</p>
+                <ul>
+                    <li>Registration Certificate(RC)</li>
+                    <li>Aadhar Card</li>
+                    <li>Owner's Pan Card</li>
+                    <li>Address Proof</li>
+                </ul>
+            </div>
+        </section>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>How does vehicle evaluation works? Do you pickup car directly from home?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>We evaluate a vehicle based on it's age, condition and salvagable parts. You can get you vehicle evaluated and picked up from home free of cost, contact us or fill the request vehicle price form and our team will reach out to you</p>
+            </div>
+        </section>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>How will I get Certificate of Deposit and Scrappage Certificate?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>You will recieve Certificate of Deposit after the vehicle deregistration has been completed usually within 24hr of selling vehicle for scrap to us</p>
+            </div>
+        </section>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>Can I trade my Certificate of Deposit, If I want to sell it?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>Yes, we at scrapio will help you find a buyer and mediate the transaction via official platform to trade Certificate of Deposit</p>
+            </div>
+        </section>
+        <section onclick="toggleFAQ(this)">
+            <div class="question">
+                <span>
+                    <h2>What happens to the car at the scrapping facility?</h2>
+                </span>
+                <span class="arrow-down">
+                </span>
+            </div>
+            <div class="answer">
+                <p>The chassis number plate and all hazardous materials are removed. The parts can be salvaged before it is crushed and recycled.</p>
+            </div>
+        </section>   
+    </div>
+    <footer>
+        <section class="footer-info">
+            <div class="footer-logo">
+                <img src="logo.svg" alt="Icon description">
+                <p>there is some information about scrapio</p>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61571401626080" target="_blank" aria-label="Facebook">
+                    <img src="facebook.svg" alt="Facebook">
+                </a>
+                <a href="https://youtube.com" target="_blank" aria-label="Youtube">
+                    <img src="youtube.svg" alt="Youtube">
+                </a>
+                <a href="https://www.instagram.com/invites/contact/?igsh=1muqkmn0wti54&utm_content=x7f9k4o" target="_blank" aria-label="Instagram">
+                    <img src="instagram.svg" alt="Instagram">
+                </a>
+                <a href="https://www.linkedin.com/in/scrapio-auto-7b007234b" target="_blank" aria-label="Instagram">
+                    <img src="linkedin.svg" alt="Linkedin">
+                </a>
+            </div>
+            <div class="nav-items">
+                <a class="nav-item" href="#about">About</a>
+                <a class="nav-item" href="#contact">Contact</a>
+                <a class="nav-item" href="#faq">FAQ</a>
+                <a id="nav-button" href="#get-price">Get Vehicle Price</a>
+            </div>
+        </section>
+        <section>
+            <h2 class="contact-us" id="contact">Reach out to us</h2>
+            <div class="contact">
+                <div class="contact-box">
+                    <div>
+                        <div class="contact-title">
+                            <h2>Visit Us</h2>
+                            <img src="location.svg" alt="address" height="35" width="35">
+                        </div>
+                        <p>Visit our center or Jaipur office for any queries</p>
+                    </div>
+                    <div class="contact-content">
+                        <div><p>Office: blah blah blah blah blah blah</p></div>
+                        <div><a href="https://maps.app.goo.gl/4MiMf9Nccy74zRyw6" target="_blank">Get Direction</a></div>
+                    </div>
+                </div>
+            
+                <div class="contact-box">
+                    <div>
+                        <div class="contact-title">
+                            <h2>Text Us</h2>
+                            <img src="whatsapp.svg" alt="whatsapp" height="35" width="35">
+                        </div>
+                        <p>Reach out to us on WhatsApp and get a response instantly</p>
+                    </div>
+                    <div class="contact-content">
+                        <div><img src="whatsappQR.png" alt="QR" height="75" width="75"></div>
+                        <div><a href="https://api.whatsapp.com/send?phone=918690900940" target="_blank">Text Now</a></div>
+                    </div>
+                </div>
+            
+                <div class="contact-box">
+                    <div>
+                        <div class="contact-title">
+                            <h2>Email Us</h2>
+                            <img src="email.svg" alt="email" height="35" width="35">
+                        </div>
+                        <p>For media or collaboration queries, drop us an email anytime.</p>
+                    </div>
+                    <div class="contact-content">
+                        <div>
+                            <p>Sales: sales@scrapioauto.com</p>
+                            <p>Inquiry: info@scrapioauto.com</p>
+                        </div>
+                        <div>
+                            <a href="mailto:sales@scrapioauto.com" target="_blank">Email</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
     <script>
         function showHamburger() {
             document.getElementById("menuContent").classList.toggle("show");
@@ -226,23 +552,9 @@
             e.preventDefault();
             const phoneInput = document.getElementById('phoneNumber');
             const phone = phoneInput.value;  // No need to trim, since max length is enforced in HTML
-            // currentStep=document.getElementById(`step-2`);
-            // const requiredFields = currentStep.querySelectorAll('[required]');
-
-            // // Check if all required fields are filled
-            // for (let field of requiredFields) {
-            //     if (!field.value.trim()) {  // Check if the field is empty or contains only spaces
-            //         // Show an error message if a required field is empty
-            //         field.style.borderColor = 'red';
-            //         field.style.backgroundColor = '#fdd'; 
-            //         return;  // Stop the form from moving to the next step
-            //     }else{
-            //         field.style.borderColor = '#D3CDCD';
-            //         field.style.backgroundColor = 'white'; 
-            //     }
-            // }
             if (validatePhoneNumber(phone)) {
             // If valid, display success message, hide the form and simulate form submission
+                form.style.cursor = 'progress';
                 phoneInput.style.borderColor = '#D3CDCD';
                 phoneInput.style.backgroundColor = 'white';
                 validationMessage.classList.remove("invalidNumber");
@@ -253,6 +565,7 @@
                   body: data,
                 })
                 .then(() => {
+                    form.style.cursor = 'default';
                     showSuccessMessage();
                     setTimeout(function() {
                         form.reset();
@@ -262,6 +575,7 @@
                 })
             }
             else{
+                validationMessage.classList.add("invalidNumber");
                 phoneInput.style.borderColor = 'red';
                 phoneInput.style.backgroundColor = '#fdd'; 
             }
@@ -276,8 +590,6 @@
             if (phone.length === 10 && /^[0-9]{10}$/.test(phone)) {
                 return true;
             } else {
-                validationMessage.classList.add("invalidNumber");
-                validationMessage.textContent = "Phone number must be 10 digits.";
                 return false;
             }
         }
@@ -289,8 +601,57 @@
             document.getElementById(`step-2`).classList.remove('active-step');
       
             // Show the success message
-            successMessage.style.display = 'block';
+            successMessage.style.display = 'flex';
         }
+
+        function toggleFAQ(faqSection){
+            const question = faqSection.querySelector(".question");
+            const answer = faqSection.querySelector(".answer");
+            let spans = question.getElementsByTagName('span');
+            document.querySelectorAll('.answer').forEach(el => {
+                if (el !== answer) el.style.display="none";
+            });
+            document.querySelectorAll('.question').forEach(question => {
+                let eachSpan = question.getElementsByTagName('span');
+                eachSpan[1].classList.remove("arrow-up");
+                eachSpan[1].classList.add("arrow-down");
+            })
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+                spans[1].classList.remove("arrow-up");
+                spans[1].classList.add("arrow-down");
+            } else {
+                answer.style.display = "block";
+                spans[1].classList.remove("arrow-down");
+                spans[1].classList.add("arrow-up");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".answer").forEach(answer => {
+                answer.style.display = "none";
+            });
+
+            document.querySelectorAll('.question').forEach(question => {
+                let spans = question.getElementsByTagName('span');
+                spans[1].classList.remove("arrow-up");
+                spans[1].classList.add("arrow-down");
+        });
+
+        })   
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                const offset = 80; // Adjust based on navbar height
+                const topPosition = target.offsetTop - offset;
+
+                window.scrollTo({
+                    top: topPosition,
+                    behavior: "smooth"
+                });
+            });
+        });
     </script>
 </body>
-</html> 
+</html>
